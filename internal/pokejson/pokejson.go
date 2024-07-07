@@ -16,19 +16,31 @@ type AreaQuery struct {
 }
 
 type Encounter struct {
-	Pokemon		[]ListItem
-	VersionDetails	Dummy		`json:version_details`
+	Pokemon		ListItem
 }
 
 type Area struct {
 	Id		int
 	Name		string
-	Index		int		`json:"game_index"`
-	EMRs		[]Dummy		`json:"encounter_method_rates"`
 	Locaton		ListItem
-	Names		[]Dummy
 	Encounters	[]Encounter 	`json:"pokemon_encounters"`
 }
 
+type Stat struct {
+	Value		int		`json:"base_stat"`
+	Label		ListItem	`json:"stat"`
+}
 
+type Type struct {
+	Label		ListItem	`json:"type"`
+}
 
+type Pokemon struct {
+	Name		string
+	ID		int
+	BaseEXP		int		`json:"base_experience"`
+	Height		int
+	Weight		int
+	Stats		[]Stat
+	Types		[]Type
+}
